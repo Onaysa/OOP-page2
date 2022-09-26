@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "name": "oop-page",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest - -verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Onaysa/OOP-page2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Onaysa/OOP-page2/issues"
+  },
+  "homepage": "https://github.com/Onaysa/OOP-page2#readme"
+}
