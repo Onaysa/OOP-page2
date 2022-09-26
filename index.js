@@ -135,7 +135,7 @@ function promptManager() {
         choices: [
           "Engineer",
           "Intern",
-          "Finish Create Team" 
+          "Finish Creating Team :)" 
         ]
       }];
 
