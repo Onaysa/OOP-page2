@@ -5,9 +5,9 @@ function manageHtml(manager){
         <h5 class="card-title">Manger</h5>
         <ul class="list-group">
           <li class="list-group-item">name:   ${manager.name}</li>
-          <li class="list-group-item">id:   ${manager.id} </li>
-          <li class="list-group-item">email: ploy3_98@yahoo.com</li>
-          <li class="list-group-item">OfficeNumber: 123</li>
+          <li class="list-group-item">id:   ${manager.id}</li>
+          <li class="list-group-item">email: jared@fakemail.com</li>
+          <li class="list-group-item">OfficeNumber: 1</li>
            
         </ul>
       </div>
@@ -15,4 +15,4 @@ function manageHtml(manager){
   </div>`
   }
 
-  module.exports=manageHtml;
+  module.exports= manageHtml;

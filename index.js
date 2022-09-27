@@ -12,7 +12,7 @@ const Intern = require("./lib/Intern");
 const generateHTML = require("./src/generateHTML");
 const manageCard = require("./src/managerHtml");
 
-const teamArr = [];
+const teampageArr = [];
 
 
 const quesManager = [
