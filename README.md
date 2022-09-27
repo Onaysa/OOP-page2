@@ -21,6 +21,7 @@ Building this project was highly important because it helped understand OOP a lo
 
 ## Usage
 
+This is the walkthrough video to showcase how it works, first you must download packages using "npm i" then use the command "node index.js" for the questions to show. I have also tested the page and the results will come up towards the end of the walkthrough video.
 
 https://watch.screencastify.com/v/gEnOEVxvg72wYGQcdCiJ)()
 
