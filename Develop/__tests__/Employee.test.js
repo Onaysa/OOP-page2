@@ -1,4 +1,4 @@
-const Employee = require("./lib/Employee");
+const Employee = require("../lib/Employee");
 test("Initiate Employee instance", () => {
     const e = new Employee();
     expect(typeof(e)).toBe("object");
