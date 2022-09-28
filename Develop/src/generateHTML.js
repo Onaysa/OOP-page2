@@ -41,25 +41,25 @@ function generateHTML(data) {
                 </div>
               </div>
             `
-            case "Intern":
-      return `
-        <div class="col-md-4 py-2">
-          <div class="card h-100 bg-light shadow">
-            <div class="card-block">
-              <div class="card-header bg-primary text-white">
-                <h3 id="name">${data.name}</h3>
-                <h4><i class="fas fa-user-graduate"></i> ${data.role}</h4>
-              </div>
-              <div class="card-body bg-light">
-                <ul class="list-group">
-                  <li class="list-group-item">ID: ${data.id}</li>
-                   <li class="list-group-item">Email: <a href="mailto:${data.email}">${data.email}</a></li>
-                  <li class="list-group-item">School: ${data.school}</li>
-                </ul>
+         case "Intern":
+            return `
+              <div class="col-md-4 py-2">
+                <div class="card h-100 bg-light shadow">
+                   <div class="card-block">
+                     <div class="card-header bg-primary text-white">
+                      <h3 id="name">${data.name}</h3>
+                      <h4><i class="fas fa-user-graduate"></i> ${data.role}</h4>
+                     </div>
+                     <div class="card-body bg-light">
+                     <ul class="list-group">
+                     <li class="list-group-item">ID: ${data.id}</li>
+                     <li class="list-group-item">Email: <a href="mailto:${data.email}">${data.email}</a></li>
+                    <li class="list-group-item">School: ${data.school}</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       ` 
    
     }}

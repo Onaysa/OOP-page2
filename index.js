@@ -10,7 +10,7 @@ const Intern = require("./lib/Intern");
 
 // please import Engineer and Intern libraries
 const generateHTML = require("./src/generateHTML");
-const manageCard = require("./src/managerHtml");
+
 
 const teamArr = [];
 
@@ -93,10 +93,11 @@ function promptManager() {
     inquirer
       .prompt(quesManager)
       .then(function (input) {
+        console.log("manager");
         const manager = new Manager(input.name, input.id, input.email, input.officeNumber)
         teamArr.push(manager);
 
-        teamPage();
+        createTeam();
       });
   }
   
@@ -108,7 +109,7 @@ function promptManager() {
         const engineer = new Engineer(input.name, input.id, input.email, input.gitName)
         teamArr.push(engineer);
 
-        teamPage();
+        createTeam();
       });
   }
 
@@ -119,13 +120,13 @@ function promptManager() {
         const intern = new Intern(input.name, input.id, input.email, input.school);
         teamArr.push(intern);
 
-        teamPage();
+        createTeam();
       });
   }
 
  
 
-  function teamPage() {
+  function createTeam() {
 
     const createTeamMember = [
       {
@@ -177,13 +178,11 @@ let html = `
       <script src="https://code.jquery.com/jquery.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
       <script src="https://kit.fontawesome.com/4d07055d3e.js" crossorigin=“anonymous”></script>
-      <!--css styling-->
       <style>
           .shadow {
               box-shadow: 5px 5px 5px grey;
           }
       </style>
-      <!--end of css styling-->
   </head>
   <body>
       <div class="container-fluid p-0 mb-0">
@@ -211,7 +210,7 @@ let html = `
             html += card;
       }
       html += close; 
-      writeFileAsync("./dist/team.html", html)
+      writeFileAsync("./dist/team.html", html);
   
   };
   
