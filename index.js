@@ -12,7 +12,7 @@ const Intern = require("./lib/Intern");
 const generateHTML = require("./src/generateHTML");
 const manageCard = require("./src/managerHtml");
 
-const teampageArr = [];
+const teamArr = [];
 
 
 const quesManager = [
@@ -135,7 +135,7 @@ function promptManager() {
         choices: [
           "Engineer",
           "Intern",
-          "Finish Creating Team :)" 
+          "Finish Creating Team" 
         ]
       }];
 
