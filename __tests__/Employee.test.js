@@ -1,10 +1,10 @@
-const Employee = require("../lib/Employee");
-test("Initiate Employee instance", () => {
+const Employee = require("../Develop/lib/Employee");
+test("Can instantiate Employee instance", () => {
     const e = new Employee();
     expect(typeof(e)).toBe("object");
   });
   
-  test("Set name via constructor arguments", () => {
+  test("Can set name via constructor arguments", () => {
     const name = "Maria";
     const e = new Employee(name);
     expect(e.name).toBe(name);

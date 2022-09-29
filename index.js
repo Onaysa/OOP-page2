@@ -136,7 +136,7 @@ function promptManager() {
         choices: [
           "Engineer",
           "Intern",
-          "Finish Creating Team" 
+          "Finish Create Team" 
         ]
       }];
 
@@ -211,6 +211,7 @@ let html = `
       }
       html += close; 
       writeFileAsync("./dist/team.html", html);
+       console.log("wrote file to dist/team.html");
   
   };
   
