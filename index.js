@@ -3,7 +3,6 @@ const inquirer = require("inquirer");
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
-
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -11,161 +10,143 @@ const Intern = require("./lib/Intern");
 // please import Engineer and Intern libraries
 const generateHTML = require("./src/generateHTML");
 
-
 const teamArr = [];
-
 
 const quesManager = [
   {
     type: "input",
     message: "What is the manager's name?",
-    name: "name"
+    name: "name",
   },
   {
     type: "input",
     message: "What is the manager's id?",
-    name: "id"
+    name: "id",
   },
- 
+
   {
     type: "input",
     message: "What is the manager's  Email?",
-    name: "email"
+    name: "email",
   },
   {
     type: "input",
     message: "What is the manager's office number?",
-    name: "officeNumber"
-  }
+    name: "officeNumber",
+  },
 ];
 
 const quesEngineer = [
   {
     type: "input",
     message: "What is the engineer's name?",
-    name: "name"
+    name: "name",
   },
   {
     type: "input",
     message: "What is the engineer's ID?",
-    name: "id"
+    name: "id",
   },
-  
+
   {
     type: "input",
     message: "What is the engineer's Email?",
-    name: "email"
+    name: "email",
   },
   {
     type: "input",
     message: "What is the engineer's Github username?",
-    name: "github"
-  }
+    name: "github",
+  },
 ];
 
 const quesIntern = [
   {
     type: "input",
     message: "What is the intern's name?",
-    name: "name"
+    name: "name",
   },
   {
     type: "input",
     message: "What is the intern's ID?",
-    name: "id"
+    name: "id",
   },
-  
+
   {
     type: "input",
     message: "What is the intern's Email?",
-    name: "email"
+    name: "email",
   },
   {
     type: "input",
     message: "What is the  intern's school?",
-    name: "school"
-  }
+    name: "school",
+  },
 ];
 
-
-
 function promptManager() {
-    inquirer
-      .prompt(quesManager)
-      .then(function (input) {
-        console.log("manager");
-        const manager = new Manager(input.name, input.id, input.email, input.officeNumber)
-        teamArr.push(manager);
+  inquirer.prompt(quesManager).then(function (input) {
+    const manager = new Manager(
+      input.name,
+      input.id,
+      input.email,
+      input.officeNumber
+    );
+    teamArr.push(manager);
 
-        createTeam();
-      });
-  }
-  
-  
-  function promptEngineer() {
-    inquirer
-      .prompt(quesEngineer)
-      .then(function (input) {
-        const engineer = new Engineer(input.name, input.id, input.email, input.gitName)
-        teamArr.push(engineer);
+    createTeam();
+  });
+}
 
-        createTeam();
-      });
-  }
+function promptEngineer() {
+  inquirer.prompt(quesEngineer).then(function (input) {
+    const engineer = new Engineer(
+      input.name,
+      input.id,
+      input.email,
+      input.gitName
+    );
+    teamArr.push(engineer);
 
-  function promptIntern() {
-    inquirer
-      .prompt(quesIntern)
-      .then(function (input) {
-        const intern = new Intern(input.name, input.id, input.email, input.school);
-        teamArr.push(intern);
+    createTeam();
+  });
+}
 
-        createTeam();
-      });
-  }
+function promptIntern() {
+  inquirer.prompt(quesIntern).then(function (input) {
+    const intern = new Intern(input.name, input.id, input.email, input.school);
+    teamArr.push(intern);
 
- 
+    createTeam();
+  });
+}
 
-  function createTeam() {
+function createTeam() {
+  const createTeamMember = [
+    {
+      type: "list",
+      message: "Which member do you want to add?",
+      name: "role",
+      choices: ["Engineer", "Intern", "Finish Create Team"],
+    },
+  ];
 
-    const createTeamMember = [
-      {
-        type: "list",
-        message: "Which member do you want to add?",
-        name: "role",
-        choices: [
-          "Engineer",
-          "Intern",
-          "Finish Create Team" 
-        ]
-      }];
+  inquirer.prompt(createTeamMember).then(function (input) {
+    if (input.role === "Engineer") {
+      promptEngineer();
+    }
+    if (input.role === "Intern") {
+      promptIntern();
+    } else if (input.role === "Finish Create Team") {
+      getHtmlTeam();
 
-    inquirer
-      .prompt(createTeamMember)
-      .then(function (input) {
-        
+      return;
+    }
+  });
+}
 
-        if (input.role === "Engineer") {
-          promptEngineer();
-        }
-        if (input.role === "Intern") {
-          promptIntern();
-        }
-        else if (input.role === "Finish Create Team") {
-        
-          
-          getHtmlTeam();
+promptManager();
 
-          return;
-        }
-          
-      });
-  }
-
-  promptManager();
-
-
- 
 let html = `
       <!DOCTYPE html>
       <html lang="en">
@@ -195,24 +176,18 @@ let html = `
               <div class="row justify-content-center" id="cards">
   `;
 
-
-  let close = `
+let close = `
         </div> 
         </div> 
       </body>
-    </html>;`
+    </html>;`;
 
-    function getHtmlTeam() {
-  
-      for (let  i= 0; i < teamArr.length; i++) {
-         
-            const card = generateHTML(teamArr[i]);
-            html += card;
-      }
-      html += close; 
-      writeFileAsync("./dist/team.html", html);
-       console.log("wrote file to dist/team.html");
-  
-  };
-  
-  
+function getHtmlTeam() {
+  for (let i = 0; i < teamArr.length; i++) {
+    const card = generateHTML(teamArr[i]);
+    html += card;
+  }
+  html += close;
+  writeFileAsync("./dist/team.html", html);
+  console.log("wrote file to dist/team.html");
+}
